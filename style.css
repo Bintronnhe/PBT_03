@@ -1,0 +1,96 @@
+/* Dòng đầu tiên theo yêu cầu kỹ thuật */
+* { box-sizing: border-box; }
+
+/* Body: font, background, color, line-height */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f7f6;
+    color: #333;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* Header: gradient, text trắng, padding ít nhất 20px */
+#main-header {
+    background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+    color: #ffffff;
+    padding: 30px;
+    text-align: center;
+}
+
+/* Navigation links */
+.nav-links {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+/* Mặc định: không gạch chân, màu cụ thể */
+.nav-links a {
+    text-decoration: none;
+    color: #a0c4ff;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+/* Hover: đổi màu + gạch chân */
+.nav-links a:hover {
+    color: #ffffff;
+    text-decoration: underline;
+}
+
+/* Link đang active: kiểu khác biệt */
+.nav-links a.active {
+    color: #ffd700;
+    border-bottom: 2px solid #ffd700;
+}
+
+/* Table kỹ năng */
+.skills-table {
+    width: 100%;
+    margin: 20px 0;
+    /* Border-collapse: collapse */
+    border-collapse: collapse;
+    background: white;
+}
+
+.skills-table th, .skills-table td {
+    padding: 12px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+/* Header row: background đậm, text trắng */
+.skills-table thead tr {
+    background-color: #1e3c72;
+    color: white;
+}
+
+/* Zebra striping: dùng nth-child(even) đổi background */
+.skills-table tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+/* Hover row: đổi background */
+.skills-table tbody tr:hover {
+    background-color: #d1e3ff;
+}
+
+/* Footer: background đậm, text nhạt, text-align center */
+#main-footer {
+    background-color: #222;
+    color: #bbb;
+    text-align: center;
+    padding: 20px;
+    margin-top: 30px;
+}
+
+/* Đảm bảo ít nhất 5 loại selector: 
+   1. Element: body, p, th...
+   2. Class: .nav-links, .active...
+   3. ID: #main-header, #main-footer
+   4. Descendant: .nav-links a
+   5. Pseudo-class: a:hover, tr:nth-child(even) 
+*/
