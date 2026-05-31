@@ -169,3 +169,18 @@ Dựa trên yêu cầu từ hình image_89f1a1.png, dưới đây là phần ph�
    * **Cách 2 (Không dùng border-box):** Tính toán lại thuộc tính `width` thủ công:
      * Kích thước width mới cho `.sidebar` = 300px - 20px*2 - 1px*2 = **258px**
      * Kích thước width mới cho `.content` = 660px - 30px*2 - 1px*2 = **598px**
+     #### Câu C2 (10đ) — Cascade Puzzle
+
+1. **"Sản phẩm A" (h2) có font-size = 20px và color = green**
+   * *Giải thích:* * `font-size`: Thẻ h2 này khớp với selector `.card .title` nên nhận giá trị 20px.
+     * `color`: Selector `.highlight` chứa thuộc tính `!important` nên ghi đè hoàn toàn tất cả các rules khác (kể cả ID `#featured .title`), làm cho chữ có màu xanh lá (green).
+
+2. **"Mô tả sản phẩm" (p trong card featured) có color = blue**
+   * *Giải thích:* Thẻ p này khớp với selector `.card p { color: inherit; }`. Thuộc tính `inherit` bắt buộc nó phải thừa kế màu từ phần tử cha trực tiếp là `.card` (thẻ div `#featured`). Mà `.card` có màu là `blue`, do đó thẻ p này nhận màu xanh dương (blue).
+
+3. **"Sản phẩm B" (h2) có font-size = 20px và color = #333 (hoặc màu mặc định của trình duyệt cho h2 nếu không tính kế thừa body)**
+   * *Giải thích:* * `font-size`: Thẻ h2 này khớp với selector `.card .title` nên nhận giá trị 20px.
+     * `color`: Thẻ h2 này chỉ khớp với các selector chỉnh font-size, không có selector nào chỉ định trực tiếp thuộc tính `color` cho nó. Thuộc tính `color` không tự động kế thừa từ `.card` sang thẻ tiêu đề `h2` theo mặc định của trình duyệt, nên nó giữ màu nguyên bản đen/xám đậm ban đầu.
+
+4. **"Mô tả sản phẩm B" (p.highlight) có color = green**
+   * *Giải thích:* Thẻ p này khớp trực tiếp với selector `.highlight { color: green !important; }`. Sức mạnh của `!important` lập tức ghi đè quy tắc kế thừa `inherit` của selector `.card p`, ép chữ hiển thị màu xanh lá (green).
