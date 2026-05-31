@@ -9,7 +9,7 @@ body {
     gap: 20px;
 }
 
-/* Các thuộc tính chung của cả 2 hộp theo đề bài */
+
 .box {
     width: 300px;
     padding: 20px;
@@ -18,14 +18,14 @@ body {
     color: #0369a1;
 }
 
-/* Cấu hình cụ thể từng hộp */
+
 .box-content {
-    box-sizing: content-box; /* Mặc định */
+    box-sizing: content-box; 
 }
 
 .box-border {
     box-sizing: border-box;
-}/* ================= STYLE CHUNG FOR PART 1 ================= */
+}
 body {
     font-family: Arial, sans-serif;
     padding: 20px;
@@ -50,9 +50,9 @@ body {
 .box-border { box-sizing: border-box; }
 
 
-/* ================= STYLE LAYOUT 3 CỘT (PART 2) ================= */
 
-/* Container chuẩn cố định 1000px */
+
+
 .container {
     width: 1000px;
     background-color: #e2e8f0;
@@ -63,33 +63,32 @@ body {
     flex-wrap: wrap; 
 }
 
-/* Các thuộc tính kích thước của 3 cột theo đề bài */
+
 .sidebar-left {
     width: 250px;
-    background-color: #ffedd5; /* Màu nền nhạt */
+    background-color: #ffedd5; 
     padding: 15px;
 }
 
 .main-content {
     width: 500px;
-    background-color: #f0fdf4; /* Màu nền khác */
-    padding: 20px;
+    background-color: #f0fdf4; 
 }
 
 .sidebar-right {
     width: 250px;
-    background-color: #fee2e2; /* Màu nền nhạt */
+    background-color: #fee2e2; 
     padding: 15px;
 }
 
-/* --- TÁC ĐỘNG CỦA BOX-SIZING --- */
 
-/* Trường hợp 1: Không dùng border-box (Áp dụng content-box) */
-.no-border-box * {
+
+/* Trường hợp 1: Không dùng border-box */
+.no-border-box aside, .no-border-box main {
     box-sizing: content-box;
 }
 
-/* Trường hợp 2: Khắc phục bằng cách áp dụng border-box */
-.has-border-box * {
+
+.has-border-box aside, .has-border-box main {
     box-sizing: border-box;
 }

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Box Model Lab - Bài B2 hoàn chỉnh</title>
+    <link rel="stylesheet" href="boxmodel.css">
+</head>
+<body>
+
+    <h2 class="section-title">PHẦN 1 — CHỨNG MINH CONTENT-BOX VS BORDER-BOX</h2>
+    <div class="demo-part1">
+        <div class="box box-content">
+            <h3>Hộp 1 (content-box)</h3>
+            <p>Width thực tế: 350px (Bị phình to)</p>
+        </div>
+        <div class="box box-border">
+            <h3>Hộp 2 (border-box)</h3>
+            <p>Width thực tế: 300px (Chuẩn kích thước)</p>
+        </div>
+    </div>
+
+    <hr style="margin: 40px 0; border: 1px dashed #ccc;">
+
+    <h2 class="section-title">PHẦN 2 — LAYOUT 3 CỘT (TỔNG CONTAINER = 1000PX)</h2>
+    
+    <h3>Trường hợp 1: KHÔNG dùng border-box (Bị vỡ layout, cột phải bị đẩy xuống dòng)</h3>
+    <div class="container no-border-box">
+        <aside class="sidebar-left">Cột trái (250px + padding)</aside>
+        <main class="main-content">Cột giữa (500px + padding)</main>
+        <aside class="sidebar-right">Cột phải (250px + padding)</aside>
+    </div>
+
+    <h3 style="margin-top: 40px;">Trường hợp 2: CÓ dùng border-box (Layout chuẩn chỉnh, thẳng hàng)</h3>
+    <div class="container has-border-box">
+        <aside class="sidebar-left">Cột trái (250px + padding)</aside>
+        <main class="main-content">Cột giữa (500px + padding)</main>
+        <aside class="sidebar-right">Cột phải (250px + padding)</aside>
+    </div>
+
+</body>
+</html>
