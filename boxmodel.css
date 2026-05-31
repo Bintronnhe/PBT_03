@@ -1,0 +1,95 @@
+body {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+    background-color: #fafafa;
+}
+
+.container {
+    display: flex;
+    gap: 20px;
+}
+
+/* Các thuộc tính chung của cả 2 hộp theo đề bài */
+.box {
+    width: 300px;
+    padding: 20px;
+    border: 5px solid black;
+    background-color: #e0f2fe;
+    color: #0369a1;
+}
+
+/* Cấu hình cụ thể từng hộp */
+.box-content {
+    box-sizing: content-box; /* Mặc định */
+}
+
+.box-border {
+    box-sizing: border-box;
+}/* ================= STYLE CHUNG FOR PART 1 ================= */
+body {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+    background-color: #fafafa;
+}
+.section-title {
+    color: #1e3c72;
+    margin-bottom: 20px;
+}
+.demo-part1 {
+    display: flex;
+    gap: 20px;
+}
+.box {
+    width: 300px;
+    padding: 20px;
+    border: 5px solid black;
+    background-color: #e0f2fe;
+    color: #0369a1;
+}
+.box-content { box-sizing: content-box; }
+.box-border { box-sizing: border-box; }
+
+
+/* ================= STYLE LAYOUT 3 CỘT (PART 2) ================= */
+
+/* Container chuẩn cố định 1000px */
+.container {
+    width: 1000px;
+    background-color: #e2e8f0;
+    margin-bottom: 20px;
+    border: 2px dashed #94a3b8;
+    /* Dùng flex-wrap để thấy rõ hiện tượng vỡ dòng khi kích thước vượt quá 1000px */
+    display: flex;
+    flex-wrap: wrap; 
+}
+
+/* Các thuộc tính kích thước của 3 cột theo đề bài */
+.sidebar-left {
+    width: 250px;
+    background-color: #ffedd5; /* Màu nền nhạt */
+    padding: 15px;
+}
+
+.main-content {
+    width: 500px;
+    background-color: #f0fdf4; /* Màu nền khác */
+    padding: 20px;
+}
+
+.sidebar-right {
+    width: 250px;
+    background-color: #fee2e2; /* Màu nền nhạt */
+    padding: 15px;
+}
+
+/* --- TÁC ĐỘNG CỦA BOX-SIZING --- */
+
+/* Trường hợp 1: Không dùng border-box (Áp dụng content-box) */
+.no-border-box * {
+    box-sizing: content-box;
+}
+
+/* Trường hợp 2: Khắc phục bằng cách áp dụng border-box */
+.has-border-box * {
+    box-sizing: border-box;
+}
