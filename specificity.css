@@ -1,0 +1,29 @@
+/* 1. Specificity: 0,0,1 */
+p { color: gray; }
+
+/* 2. Specificity: 0,1,0 */
+.text { color: blue; }
+
+/* 3. Specificity: 0,1,1 */
+p.text { color: green; }
+
+/* 4. Specificity: 0,2,0 */
+.text.highlight { color: purple; }
+
+/* 5. Specificity: 0,2,1 */
+p.text.highlight { color: orange; }
+
+/* 6. Specificity: 1,0,0 */
+#demo { color: red; }
+
+/* 7. Specificity: 1,0,1 */
+p#demo { color: brown; }
+
+/* 8. Specificity: 1,1,0 */
+#demo.text { color: magenta; }
+
+/* 9. Specificity: 1,1,1 */
+p#demo.text { color: cyan; }
+
+/* 10. Specificity: 1,2,1 */
+p#demo.text.highlight { color: navy; }

@@ -116,3 +116,56 @@ Dựa trên các CSS rules và element đã cho trong hình image_8a5ef6.png, d�
 **4. Nếu Rule A thêm `!important`, element có màu gì? Tại sao?**
 *   **Kết quả:** Element sẽ có màu **Đen (black)**.
 *   **Giải thích:** Từ khóa `!important` là một công cụ mạnh nhất trong CSS, nó ghi đè lên tất cả các quy tắc về Specificity thông thường (kể cả ID hay Inline style). Khi Rule A có `!important`, nó sẽ trở thành quy tắc tối thượng và được áp dụng.
+#### Bài B2 (20đ) — Box Model Lab
+
+Dựa trên kết quả đo đạc từ trình duyệt DevTools (tab Computed) với các thông số width: 300px, padding: 20px, border: 5px:
+
+* Hộp 1 (content-box): chiều rộng thực tế = 350 px (đo từ DevTools)
+* Hộp 2 (border-box): chiều rộng thực tế = 300 px (đo từ DevTools)
+
+**Giải thích sự khác biệt:**
+* **Hộp 1 (content-box):** Đây là cơ chế mặc định của CSS. Chiều rộng thực tế hiển thị trên trình duyệt sẽ bằng thuộc tính `width` cộng thêm `padding` và `border` của cả 2 bên trái/phải ($300 + 20 \times 2 + 5 \times 2 = 350\text{px}$). Do đó, chiếc hộp bị phình to ra hơn so với kích thước ban đầu.
+* **Hộp 2 (border-box):** Khi sử dụng cơ chế này, trình duyệt tự động tính toán để co phần không gian của vùng nội dung (content) lại, đảm bảo tổng chiều rộng hiển thị bên ngoài bao gồm cả `padding` và `border` luôn cố định đúng bằng giá trị `width` đã khai báo ($300\text{px}$). Điều này giúp việc thiết kế layout chính xác và dễ quản lý hơn nhiều.
+**Phần 2 — Layout 3 cột:**
+* Tính toán lý thuyết khi KHÔNG dùng `border-box`:
+  Tổng chiều rộng thực tế = (250px + 15px*2) + (500px + 20px*2) + (250px + 15px*2) = 280px + 540px + 280px = 1100px.
+* Vì $1100\text{px} > 1000\text{px}$ (vượt quá chiều rộng tối đa của container), các phần tử không thể xếp cùng một hàng mà cột bên phải (ads) bắt buộc phải bị đẩy vỡ xuống dòng bên dưới.
+* Giải pháp: Khi kích hoạt `box-sizing: border-box`, kích thước thực tế của các cột được giữ nguyên đúng bằng tỉ lệ thiết kế (250px - 500px - 250px), giúp tổng chiều rộng vừa khít 1000px và layout hiển thị hoàn hảo trên một hàng dọc duy nhất.
+#### Bài B3 (15đ) — Specificity Battle
+
+1. Liệt kê 10 rules + specificity score:
+   * `p` -> (0, 0, 1)
+   * `.text` -> (0, 1, 0)
+   * `p.text` -> (0, 1, 1)
+   * `.text.highlight` -> (0, 2, 0)
+   * `p.text.highlight` -> (0, 2, 1)
+   * `#demo` -> (1, 0, 0)
+   * `p#demo` -> (1, 0, 1)
+   * `#demo.text` -> (1, 1, 0)
+   * `p#demo.text` -> (1, 1, 1)
+   * `p#demo.text.highlight` -> (1, 2, 1)
+
+2. Element cuối cùng hiển thị màu gì? Tại sao?
+   * Màu hiển thị: Màu xanh hải quân (navy).
+   * Tại sao: Rule `p#demo.text.highlight` có điểm Specificity score cao nhất (1, 2, 1) nên nó sẽ thắng tất cả các rules còn lại.
+
+4. Thay đổi thứ tự rules trong CSS file. Kết quả có đổi không? Giải thích.
+   * Kết quả: KHÔNG ĐỔI.
+   * Giải thích: Khi các selector có điểm Specificity khác nhau, trình duyệt luôn ưu tiên áp dụng selector có điểm cao hơn bất kể vị trí đứng trước hay đứng sau trong file CSS. Thứ tự viết chỉ có tác dụng khi hai selector có điểm Specificity hoàn toàn bằng nhau.
+   #### Câu C1 (10đ) — Debug CSS Layout
+
+Dựa trên yêu cầu từ hình image_89f1a1.png, dưới đây là phần phân tích và giải quyết:
+
+1. **Tính chiều rộng thực tế của sidebar và content (content-box!):**
+   * **Sidebar:** 300px (width) + 20px*2 (padding) + 1px*2 (border) = **342px**
+   * **Content:** 660px (width) + 30px*2 (padding) + 1px*2 (border) = **722px**
+
+2. **Giải thích tại sao layout bị vỡ:**
+   * Tổng chiều rộng thực tế của hai khối là: $342\text{px} + 722\text{px} = 1064\text{px}$.
+   * Vì $1064\text{px} > 960\text{px}$ (vượt quá độ rộng tối đa của `.container`), không gian không đủ để xếp hai khối nằm cạnh nhau, dẫn đến khối `.content` bị đẩy rơi xuống dòng mới.
+
+3. **Đưa ra 2 cách sửa khác nhau:**
+   * **Cách 1 (Dùng border-box):** Thêm thuộc tính `box-sizing: border-box;` cho cả `.sidebar` và `.content` để chiều rộng thực tế giữ nguyên cố định đúng bằng 300px và 660px (Tổng $300 + 660 = 960\text{px}$).
+   * **Cách 2 (Không dùng border-box):** Tính toán lại thuộc tính `width` thủ công:
+     * Kích thước width mới cho `.sidebar` = 300px - 20px*2 - 1px*2 = **258px**
+     * Kích thước width mới cho `.content` = 660px - 30px*2 - 1px*2 = **598px**
